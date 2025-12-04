@@ -1,4 +1,4 @@
-// api/server.js - KODE FINAL
+// api/server.js
 const db = require('./db'); 
 
 module.exports = async (req, res) => {
@@ -7,24 +7,24 @@ module.exports = async (req, res) => {
         return res.status(405).end('Method Not Allowed');
     }
     
-    // PERBAIKAN KRUSIAL: Menggunakan AS alias
+    // Pastikan Anda menggunakan nama kolom dan tabel yang BENAR di sini:
     const queryText = `
         SELECT 
             sku, 
-            -- Mengubah kolom database 'name' menjadi JSON output "productName"
-            [NAMA_KOLOM_PRODUK_ASLI] AS "productName", 
+            product_name AS "productName", 
             price, 
-            -- Mengubah kolom database 'is_available' (atau 'availability') menjadi JSON output "isAvailable"
-            [NAMA_KOLOM_STOK_ASLI] AS "isAvailable" 
+            is_available AS "isAvailable" 
         FROM productsss; 
+        -- Gunakan "productsss" jika itu nama tabel Anda yang sebenarnya.
+        -- Gunakan nama kolom asli Anda (misal: product_name, is_available)
     `;
 
     try {
-        const productssss = await db.query(queryText);
+        const { rows } = await db.query(queryText);
         
+        // Mengirimkan response dalam format JSON
         res.setHeader('Content-Type', 'application/json');
-        // Pastikan Vercel menginterpretasikan true/false sebagai Boolean (bukan string)
-        return res.status(200).json(products);
+        return res.status(200).json(rows);
 
     } catch (error) {
         console.error('API execution failed:', error.message);
