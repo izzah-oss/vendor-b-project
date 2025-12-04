@@ -12,11 +12,11 @@ module.exports = async (req, res) => {
         SELECT 
             sku, 
             -- Mengubah kolom database 'name' menjadi JSON output "productName"
-            name AS "productName", 
+            [NAMA_KOLOM_PRODUK_ASLI] AS "productName", 
             price, 
             -- Mengubah kolom database 'is_available' (atau 'availability') menjadi JSON output "isAvailable"
-            is_available AS "isAvailable" 
-        FROM products; 
+            [NAMA_KOLOM_STOK_ASLI] AS "isAvailable" 
+        FROM productsss; 
     `;
 
     try {
