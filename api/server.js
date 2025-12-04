@@ -20,7 +20,7 @@ module.exports = async (req, res) => {
     `;
 
     try {
-        const products = await db.query(queryText);
+        const productssss = await db.query(queryText);
         
         res.setHeader('Content-Type', 'application/json');
         // Pastikan Vercel menginterpretasikan true/false sebagai Boolean (bukan string)
