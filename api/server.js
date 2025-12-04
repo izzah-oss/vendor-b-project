@@ -1,4 +1,4 @@
-// api/server.js
+// api/server.js - VERSI FINAL BERSIH
 const db = require('./db'); 
 
 module.exports = async (req, res) => {
@@ -7,21 +7,19 @@ module.exports = async (req, res) => {
         return res.status(405).end('Method Not Allowed');
     }
     
-    // Pastikan Anda menggunakan nama kolom dan tabel yang BENAR di sini:
-// api/server.js - Coba Kode B
-        const queryText = `
-             SELECT 
-             sku, 
-            name AS "productName", 
-             price, 
-             availability AS "isAvailable" 
-         FROM productsss; 
-    `;
+    // Pastikan Anda menggunakan nama kolom dan tabel yang benar
+    const queryText = `
+SELECT 
+sku, 
+name AS "productName", 
+price, 
+availability AS "isAvailable" 
+FROM productsss;
+`;
 
     try {
         const { rows } = await db.query(queryText);
         
-        // Mengirimkan response dalam format JSON
         res.setHeader('Content-Type', 'application/json');
         return res.status(200).json(rows);
 
