@@ -18,7 +18,7 @@ module.exports = async (req, res) => {
             "productName", 
             price, 
             "isAvailable" 
-        FROM products; 
+        FROM productsss; 
     `;
 
     try {
