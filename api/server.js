@@ -8,15 +8,14 @@ module.exports = async (req, res) => {
     }
     
     // Pastikan Anda menggunakan nama kolom dan tabel yang BENAR di sini:
-    const queryText = `
-        SELECT 
-            sku, 
-            product_name AS "productName", 
-            price, 
-            is_available AS "isAvailable" 
-        FROM productsss; 
-        -- Gunakan "productsss" jika itu nama tabel Anda yang sebenarnya.
-        -- Gunakan nama kolom asli Anda (misal: product_name, is_available)
+// api/server.js - Coba Kode B
+        const queryText = `
+             SELECT 
+             sku, 
+            name AS "productName", 
+             price, 
+             availability AS "isAvailable" 
+         FROM productsss; 
     `;
 
     try {
